@@ -1,0 +1,494 @@
+/* 悪魔の献立アプリ - りゅうじ風スタイルシート */
+
+/* CSS変数定義 */
+:root {
+    --primary-red: #ff4757;
+    --dark-red: #c44569;
+    --devil-orange: #ff6b35;
+    --dark-bg: #2f3542;
+    --darker-bg: #1e272e;
+    --light-text: #f1f2f6;
+    --accent-yellow: #feca57;
+    --success-green: #5f27cd;
+    --container-bg: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ベーススタイル */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    color: var(--light-text);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* ヘッダー */
+.app-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--devil-orange) 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(255, 71, 87, 0.3);
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+.app-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 400;
+}
+
+/* コンテナ */
+.container {
+    background: var(--container-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideIn 0.5s ease-out;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.container h3 {
+    color: var(--accent-yellow);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* 気分選択ボタン */
+.mood-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.mood-btn {
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.mood-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.mood-btn:hover:before {
+    left: 100%;
+}
+
+.mood-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+}
+
+.mood-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* レシピリスト */
+.recipe-list {
+    margin-top: 20px;
+}
+
+.recipe-item {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(196, 69, 105, 0.1) 100%);
+    border: 2px solid rgba(255, 107, 53, 0.3);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.recipe-item:hover {
+    border-color: var(--devil-orange);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(196, 69, 105, 0.2) 100%);
+    transform: translateX(5px);
+    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.3);
+}
+
+.recipe-item.selected {
+    background: linear-gradient(135deg, var(--devil-orange) 0%, var(--primary-red) 100%);
+    border-color: var(--accent-yellow);
+    color: white;
+    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.5);
+}
+
+.recipe-item h4 {
+    color: var(--accent-yellow);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.recipe-item.selected h4 {
+    color: white;
+}
+
+.recipe-item p {
+    margin-bottom: 5px;
+}
+
+/* 情報ボックス */
+.history-display, 
+.balance-message, 
+.learning-status, 
+.family-status {
+    background: linear-gradient(135deg, rgba(95, 39, 205, 0.2) 0%, rgba(254, 202, 87, 0.2) 100%);
+    border: 1px solid rgba(95, 39, 205, 0.3);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.family-status.active {
+    background: linear-gradient(135deg, rgba(95, 39, 205, 0.3) 0%, rgba(254, 202, 87, 0.3) 100%);
+    border-color: var(--accent-yellow);
+    box-shadow: 0 4px 20px rgba(254, 202, 87, 0.2);
+}
+
+/* 家族設定 */
+.family-settings {
+    margin: 15px 0;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.setting-item:hover {
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--devil-orange);
+    transform: translateX(3px);
+}
+
+.setting-item input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.3);
+    accent-color: var(--primary-red);
+}
+
+.setting-item input[type="checkbox"]:checked + span {
+    font-weight: bold;
+    color: var(--accent-yellow);
+}
+
+/* ボタン */
+button {
+    padding: 12px 25px;
+    margin: 8px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--success-green) 0%, var(--primary-red) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(95, 39, 205, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(95, 39, 205, 0.4);
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(196, 69, 105, 0.3);
+}
+
+.secondary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(196, 69, 105, 0.4);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* デバッグエリア */
+.debug-info {
+    background: rgba(47, 53, 66, 0.8);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+.debug-info h4 {
+    color: var(--accent-yellow);
+    margin-bottom: 15px;
+}
+
+.debug-buttons {
+    margin-bottom: 15px;
+}
+
+.debug-info button {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin: 3px;
+}
+
+.debug-info button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.debug-info pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* フッター */
+.app-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid var(--border-color);
+}
+
+.app-footer p {
+    margin-bottom: 5px;
+}
+
+/* ユーティリティクラス */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--devil-orange);
+}
+
+/* アニメーション */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .app-title {
+        font-size: 2rem;
+    }
+    
+    .app-subtitle {
+        font-size: 1rem;
+    }
+    
+    .mood-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .mood-btn {
+        font-size: 1rem;
+        padding: 15px;
+    }
+    
+    .recipe-item {
+        padding: 15px;
+    }
+    
+    .recipe-item h4 {
+        font-size: 1.1rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        width: 100%;
+        max-width: 300px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-title {
+        font-size: 1.5rem;
+    }
+    
+    .container h3 {
+        font-size: 1.2rem;
+    }
+    
+    .mood-btn {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+}
+
+/* プリント用スタイル */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .debug-info,
+    .mood-buttons,
+    button {
+        display: none;
+    }
+    
+    .container {
+        border: 1px solid #ccc;
+        box-shadow: none;
+        background: white;
+    }
+}
+
+/* ダークモード対応（将来の拡張用） */
+@media (prefers-color-scheme: dark) {
+    /* 既にダークテーマなので変更不要 */
+}
+
+/* 高コントラストモード対応 */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-red: #ff0000;
+        --accent-yellow: #ffff00;
+        --light-text: #ffffff;
+    }
+}
+
+/* アニメーション無効化設定 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
