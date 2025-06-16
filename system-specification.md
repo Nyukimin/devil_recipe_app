@@ -108,23 +108,22 @@ AppState {
 ### 3.1 Recipeモデル
 ```typescript
 interface Recipe {
-  id: number;                    // 一意ID
-  name: string;                  // レシピ名
-  category: MoodCategory;        // カテゴリ
-  mainProtein: string;           // メインタンパク質
-  proteinType: ProteinType;      // タンパク質タイプ
-  vegetables: string[];          // 野菜リスト
-  cookTime: number;              // 調理時間（分）
-  difficulty: 1 | 2 | 3;        // 難易度
-  childFriendly: boolean;        // 子供向けフラグ
-  spicyLevel: 0 | 1 | 2 | 3;     // 辛さレベル
-  allergens: AllergenType[];     // アレルゲンリスト
-  nutritionTags: string[];       // 栄養タグ
-  ingredients: string[];         // 材料リスト
-  steps: string[];               // 手順
-  tips: string;                  // コツ
-  estimatedCost?: number;        // 推定コスト（円）
-  season?: SeasonType;           // 季節
+  id: number;
+  name: string;
+  category: MoodCategory;
+  ingredients: string[];
+  idea: string;
+  tags: string[];
+  image: string | null;
+  video: string | null;
+  steps: string[] | null;
+  tips: string;
+  nutrition: any | null;
+  cookTime: number;
+  difficulty: 1 | 2 | 3;
+  spicyLevel: 0 | 1 | 2 | 3;
+  childFriendly: boolean;
+  allergens: AllergenType[];
 }
 
 type MoodCategory = '疲れた' | 'がっつり' | 'あっさり' | 'チャレンジ';
@@ -782,3 +781,46 @@ Patch: バグ修正
 **Document Version**: 1.0.0  
 **Last Updated**: 2025-06-14  
 **Author**: 悪魔の献立アプリ開発チーム
+
+11. レシピ出典リンク仕様
+
+11.1 sourceUrlの導入背景
+
+目的: 各レシピの調理手順詳細を動画・記事など信頼性の高い外部リンクで提供することで、ユーザー体験を向上
+
+優先順: リュウジ > クラシル > CookPad > その他（Nadiaなど）
+
+形式: JSONオブジェクトの sourceUrl に文字列URLを追加
+
+11.2 フロントエンドUIとの連携
+
+詳細画面に「調理手順はこちら」ボタンを表示
+
+sourceUrl が存在するレシピのみリンク表示
+
+外部リンクは別タブで開く (target="_blank" rel="noopener noreferrer")
+
+11.3 例（JSON）
+
+{
+  "id": 3,
+  "name": "至高の豚キムチ",
+  "sourceUrl": "https://www.youtube.com/watch?v=xxx"
+}
+
+11.4 データベース拡張
+
+recipes.json → recipes_with_sourceUrl.json に拡張
+
+全64レシピに対し、可能な限り sourceUrl を付与
+
+ソースが不明の場合は null を許容（将来補完予定）
+
+11.5 保守ルール
+
+URLがリンク切れにならないよう定期的にチェック
+
+優先順位に沿った信頼性維持
+
+外部コンテンツ変更時もアプリ上でUIが破綻しない設計に（URLなし時はボタン非表示）
+
