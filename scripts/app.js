@@ -250,11 +250,16 @@ function showRecipeDetail(recipe) {
                 <h3>💡 ポイント</h3>
                 <p>${recipe.tips}</p>
             </div>
-            
+
             ${recipe.allergens && recipe.allergens.length > 0 ? `
                 <div class="recipe-allergens">
                     <h3>⚠️ アレルギー情報</h3>
                     <p>${recipe.allergens.join('、')}</p>
+                </div>
+            ` : ''}
+            ${recipe.sourceUrl ? `
+                <div class="recipe-source">
+                    <a href="${recipe.sourceUrl}" target="_blank" rel="noopener noreferrer" class="source-button">調理手順はこちら</a>
                 </div>
             ` : ''}
         </div>

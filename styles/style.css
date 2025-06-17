@@ -478,10 +478,35 @@ body {
 }
 
 .recipe-allergens {
-    background: rgba(255, 193, 7, 0.1);
-    padding: var(--space-md);
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    background-color: rgba(255, 71, 87, 0.1);
+    border-left: 4px solid var(--primary-red);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.recipe-source {
+    margin-top: var(--space-lg);
+    text-align: center;
+}
+
+.source-button {
+    display: inline-block;
+    background-color: var(--devil-orange);
+    color: var(--light-text);
+    padding: var(--space-md) var(--space-xl);
     border-radius: 8px;
-    border-left: 4px solid var(--accent-yellow);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+}
+
+.source-button:hover {
+    background-color: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 107, 53, 0.6);
 }
 
 .recipe-actions {
