@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     try {
         await initializeApp();
         console.log('✅ アプリ初期化完了');
+        // デバッグ用: 初期化後のAppStateを表示
+        console.log('DEBUG: AppState after initialization:', AppState);
     } catch (error) {
         console.error('❌ 初期化エラー:', error);
         showErrorMessage('アプリの初期化に失敗しました。ページを再読み込みしてください。');
@@ -51,7 +53,8 @@ async function initializeApp() {
         
         // レシピデータの読み込み
         const response = await fetch('./data/recipes.json');
-        AppState.recipes = await response.json();
+        const data = await response.json();
+        AppState.recipes = data.ideas; // "ideas"配列をrecipesに設定
         
         // UIの初期化
         updateHistoryDisplay();
@@ -83,6 +86,7 @@ function loadFromLocalStorage() {
 
 // 気分選択処理
 function selectMood(mood) {
+    console.log(`DEBUG: selectMood called with mood: ${mood}`);
     AppState.currentMood = mood;
     
     // 気分ボタンの選択状態を更新
@@ -90,6 +94,7 @@ function selectMood(mood) {
     
     const candidates = getRecipeCandidates(mood);
     AppState.currentCandidates = candidates;
+    console.log('DEBUG: Generated candidates:', candidates);
     displayRecipeCandidates(candidates);
 }
 
@@ -106,19 +111,26 @@ function updateMoodButtonSelection(selectedMood) {
 
 // レシピ候補の取得
 function getRecipeCandidates(mood) {
+    console.log(`DEBUG: getRecipeCandidates called for mood: ${mood}`);
     let candidates = AppState.recipes.filter(recipe => recipe.category === mood);
+    console.log('DEBUG: Initial candidates (filtered by mood):', candidates);
     
     // 家族設定によるフィルタリング
     candidates = filterByFamily(candidates);
+    console.log('DEBUG: Candidates after family filter:', candidates);
     
     // 重複回避フィルタリング
     candidates = avoidFoodDuplication(candidates);
+    console.log('DEBUG: Candidates after duplication avoidance:', candidates);
     
     // 好みによるソート
     candidates = sortByPreference(candidates);
+    console.log('DEBUG: Candidates after preference sort:', candidates);
     
     // 上位3件を返す
-    return candidates.slice(0, 3);
+    const finalCandidates = candidates.slice(0, 3);
+    console.log('DEBUG: Final 3 candidates:', finalCandidates);
+    return finalCandidates;
 }
 
 // 家族設定によるフィルタリング
@@ -486,8 +498,12 @@ function formatDate(timestamp) {
 
 function showError(message) {
     // エラーメッセージの表示処理
-    console.error(message);
-    // TODO: UIでのエラー表示実装
+    console.error('ERROR:', message); // console.errorでより目立つように
+    // TODO: UIでのエラー表示実装 - 今後UIに表示するよう修正予定
+    const errorDisplay = document.getElementById('debugOutput'); // 一時的にデバッグエリアに表示
+    if (errorDisplay) {
+        errorDisplay.innerHTML = `<p style="color: red;">${message}</p>` + errorDisplay.innerHTML;
+    }
 }
 
 // デバッグ機能
