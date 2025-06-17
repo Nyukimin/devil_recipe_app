@@ -521,124 +521,7 @@ function addTestData() {
     // TODO: テストデータの実装
 }
 
-// レシピ検索機能
-function searchRecipes(query) {
-    query = query.toLowerCase();
-    return AppState.recipes.filter(recipe => {
-        // 名前での検索
-        if (recipe.name.toLowerCase().includes(query)) return true;
-        
-        // 材料での検索
-        if (recipe.ingredients.some(ingredient => 
-            ingredient.toLowerCase().includes(query))) return true;
-        
-        // カテゴリでの検索
-        if (recipe.category.toLowerCase().includes(query)) return true;
-        
-        // アイデアでの検索
-        if (recipe.idea.toLowerCase().includes(query)) return true;
-        
-        // タグでの検索
-        if (recipe.tags && recipe.tags.some(tag => 
-            tag.toLowerCase().includes(query))) return true;
-        
-        return false;
-    });
-}
-
-// 検索結果の表示
-function displaySearchResults(results) {
-    const recipeList = document.getElementById('recipeList');
-    recipeList.innerHTML = '';
-    
-    if (results.length === 0) {
-        recipeList.innerHTML = '<p class="no-results">検索結果が見つかりませんでした。</p>';
-        return;
-    }
-    
-    results.forEach(recipe => {
-        const recipeCard = createRecipeCard(recipe);
-        recipeList.appendChild(recipeCard);
-    });
-    
-    document.getElementById('recipeContainer').classList.remove('hidden');
-}
-
-// 検索イベントハンドラ
-function handleSearch(event) {
-    event.preventDefault();
-    const searchInput = document.getElementById('searchInput');
-    const query = searchInput.value.trim();
-    
-    if (query.length < 2) {
-        showError('検索キーワードは2文字以上入力してください');
-        return;
-    }
-    
-    const results = searchRecipes(query);
-    displaySearchResults(results);
-    
-    // 検索履歴の更新
-    updateSearchHistory(query);
-}
-
-// 検索履歴の更新
-function updateSearchHistory(query) {
-    if (!AppState.userPreferences.searchHistory) {
-        AppState.userPreferences.searchHistory = [];
-    }
-    
-    AppState.userPreferences.searchHistory.unshift({
-        query: query,
-        timestamp: new Date().toISOString()
-    });
-    
-    // 最新の10件のみ保持
-    if (AppState.userPreferences.searchHistory.length > 10) {
-        AppState.userPreferences.searchHistory.pop();
-    }
-    
-    saveToLocalStorage();
-}
-
-// 検索履歴の表示
-function displaySearchHistory() {
-    const historyContainer = document.getElementById('searchHistory');
-    if (!historyContainer) return;
-    
-    const history = AppState.userPreferences.searchHistory || [];
-    
-    if (history.length === 0) {
-        historyContainer.innerHTML = '<p>検索履歴はありません</p>';
-        return;
-    }
-    
-    historyContainer.innerHTML = `
-        <h4>最近の検索</h4>
-        <ul>
-            ${history.map(item => `
-                <li>
-                    <a href="#" onclick="performSearchFromHistory('${item.query}'); return false;">
-                        ${item.query}
-                    </a>
-                    <span class="timestamp">${formatDate(item.timestamp)}</span>
-                </li>
-            `).join('')}
-        </ul>
-    `;
-}
-
-// 検索履歴からの検索実行
-function performSearchFromHistory(query) {
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.value = query;
-        const results = searchRecipes(query);
-        displaySearchResults(results);
-    }
-}
-
-// リシャッフル機能を追加
+// リシャッフル機能
 function reshuffleRecipes() {
     if (!AppState.currentMood) return;
     
@@ -650,7 +533,7 @@ function reshuffleRecipes() {
     displayRecipeCandidates(candidates);
 }
 
-// トップに戻る機能を追加
+// トップに戻る機能
 function resetToMoodSelection() {
     AppState.currentMood = null;
     AppState.selectedRecipe = null;
