@@ -84,8 +84,24 @@ function loadFromLocalStorage() {
 // 気分選択処理
 function selectMood(mood) {
     AppState.currentMood = mood;
+    
+    // 気分ボタンの選択状態を更新
+    updateMoodButtonSelection(mood);
+    
     const candidates = getRecipeCandidates(mood);
+    AppState.currentCandidates = candidates;
     displayRecipeCandidates(candidates);
+}
+
+// 気分ボタンの選択状態を更新
+function updateMoodButtonSelection(selectedMood) {
+    const moodButtons = document.querySelectorAll('.mood-btn');
+    moodButtons.forEach(btn => {
+        btn.classList.remove('selected');
+        if (btn.onclick.toString().includes(`'${selectedMood}'`)) {
+            btn.classList.add('selected');
+        }
+    });
 }
 
 // レシピ候補の取得
@@ -207,21 +223,23 @@ function showRecipeDetail(recipe) {
                 </ul>
             </div>
             
-            <div class="recipe-steps">
-                <h3>👨‍🍳 手順</h3>
-                <ol>
-                    ${recipe.steps.map(step => `
-                        <li>${step}</li>
-                    `).join('')}
-                </ol>
-            </div>
+            ${recipe.steps && recipe.steps.length > 0 ? `
+                <div class="recipe-steps">
+                    <h3>👨‍🍳 手順</h3>
+                    <ol>
+                        ${recipe.steps.map(step => `
+                            <li>${step}</li>
+                        `).join('')}
+                    </ol>
+                </div>
+            ` : ''}
             
             <div class="recipe-tips">
                 <h3>💡 ポイント</h3>
                 <p>${recipe.tips}</p>
             </div>
             
-            ${recipe.allergens.length > 0 ? `
+            ${recipe.allergens && recipe.allergens.length > 0 ? `
                 <div class="recipe-allergens">
                     <h3>⚠️ アレルギー情報</h3>
                     <p>${recipe.allergens.join('、')}</p>
@@ -230,9 +248,6 @@ function showRecipeDetail(recipe) {
         </div>
         
         <div class="recipe-actions">
-            <button class="primary-btn" onclick="selectRecipe(${JSON.stringify(recipe)})">
-                🎯 このレシピを選ぶ
-            </button>
             <button class="secondary-btn" onclick="closeRecipeDetail()">
                 🔙 戻る
             </button>
@@ -247,6 +262,13 @@ function showRecipeDetail(recipe) {
     
     // アニメーション効果
     setTimeout(() => modal.classList.add('show'), 10);
+    
+    // モーダル外クリックで閉じる
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeRecipeDetail();
+        }
+    });
 }
 
 // レシピ詳細を閉じる
@@ -270,8 +292,13 @@ function createRecipeCard(recipe) {
             <span class="difficulty">⭐ ${'⭐'.repeat(recipe.difficulty)}</span>
             ${recipe.spicyLevel > 0 ? `<span class="spicy-level">🌶️ ${'🌶️'.repeat(recipe.spicyLevel)}</span>` : ''}
         </div>
+        <div class="recipe-actions">
+            <button class="detail-btn" onclick="showRecipeDetail(${JSON.stringify(recipe).replace(/"/g, '&quot;')})">
+                📖 詳細を見る
+            </button>
+        </div>
     `;
-    card.onclick = () => showRecipeDetail(recipe);
+    card.onclick = () => selectRecipe(recipe);
     return card;
 }
 
@@ -290,6 +317,13 @@ function updateRecipeSelection() {
             card.classList.add('selected');
         }
     });
+    
+    // 確定ボタンの有効化
+    const confirmBtn = document.querySelector('.primary-btn');
+    if (confirmBtn) {
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = '🎯 この悪魔的献立に決定！';
+    }
 }
 
 // 選択の確定
@@ -584,7 +618,7 @@ function displaySearchHistory() {
         <ul>
             ${history.map(item => `
                 <li>
-                    <a href="#" onclick="searchRecipes('${item.query}'); return false;">
+                    <a href="#" onclick="performSearchFromHistory('${item.query}'); return false;">
                         ${item.query}
                     </a>
                     <span class="timestamp">${formatDate(item.timestamp)}</span>
@@ -592,6 +626,43 @@ function displaySearchHistory() {
             `).join('')}
         </ul>
     `;
+}
+
+// 検索履歴からの検索実行
+function performSearchFromHistory(query) {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.value = query;
+        const results = searchRecipes(query);
+        displaySearchResults(results);
+    }
+}
+
+// リシャッフル機能を追加
+function reshuffleRecipes() {
+    if (!AppState.currentMood) return;
+    
+    // 現在選択されているレシピをリセット
+    AppState.selectedRecipe = null;
+    
+    // 新しい候補を取得
+    const candidates = getRecipeCandidates(AppState.currentMood);
+    displayRecipeCandidates(candidates);
+}
+
+// トップに戻る機能を追加
+function resetToMoodSelection() {
+    AppState.currentMood = null;
+    AppState.selectedRecipe = null;
+    AppState.currentCandidates = [];
+    
+    // コンテナを隠す
+    document.getElementById('recipeContainer').classList.add('hidden');
+    document.getElementById('confirmContainer').classList.add('hidden');
+    
+    // 気分ボタンの選択状態をリセット
+    const moodButtons = document.querySelectorAll('.mood-btn');
+    moodButtons.forEach(btn => btn.classList.remove('selected'));
 }
 
 // アプリケーションの初期化

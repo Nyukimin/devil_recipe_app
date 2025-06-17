@@ -109,11 +109,78 @@ body {
     background-color: var(--dark-bg);
     border-radius: 8px;
     padding: var(--space-lg);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    cursor: pointer;
+    border: 2px solid transparent;
 }
 
 .recipe-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(255,71,87,0.3);
+}
+
+.recipe-card.selected {
+    border-color: var(--devil-orange);
+    background-color: rgba(255, 107, 53, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+}
+
+.recipe-card h4 {
+    color: var(--accent-yellow);
+    margin-bottom: var(--space-sm);
+}
+
+.recipe-card p {
+    color: var(--light-text);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+}
+
+.recipe-meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.recipe-actions {
+    margin-top: var(--space-md);
+    text-align: center;
+}
+
+.detail-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light-text);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.detail-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 気分ボタンの選択状態 */
+.mood-btn.selected {
+    background-color: var(--devil-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+/* レスポンシブレシピカード */
+@media (max-width: 768px) {
+    .recipe-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .recipe-card {
+        padding: var(--space-md);
+    }
 }
 
 /* ボタングループ */
@@ -275,25 +342,6 @@ body {
 }
 
 /* レスポンシブデザイン */
-@media (max-width: 768px) {
-    .app-title {
-        font-size: 2rem;
-    }
-    
-    .container {
-        margin: var(--space-md);
-        padding: var(--space-md);
-    }
-    
-    .mood-buttons {
-        grid-template-columns: 1fr;
-    }
-    
-    .button-group {
-        flex-direction: column;
-    }
-}
-
 @media (max-width: 480px) {
     .app-title {
         font-size: 1.5rem;
@@ -493,24 +541,6 @@ body {
     margin-bottom: var(--space-sm);
 }
 
-.recipe-meta {
-    display: flex;
-    gap: var(--space-md);
-    color: var(--light-text);
-    font-size: 0.9rem;
-}
-
-.recipe-content {
-    display: grid;
-    gap: var(--space-lg);
-}
-
-.recipe-content h3 {
-    color: var(--primary-red);
-    margin-bottom: var(--space-sm);
-    font-size: 1.2rem;
-}
-
 .recipe-ingredients ul {
     list-style: none;
     padding: 0;
@@ -577,11 +607,4 @@ body {
 
 .recipe-card:hover::after {
     transform: translateY(0);
-}
-
-.recipe-meta {
-    display: flex;
-    gap: var(--space-md);
-    margin-top: var(--space-sm);
-    font-size: 0.9rem;
 }
