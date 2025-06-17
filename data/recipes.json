@@ -7,20 +7,27 @@
       "id": 1,
       "name": "豚バラもやし炒め",
       "category": "疲れた",
+      "mainProtein": "豚バラ肉",
+      "proteinType": "豚",
       "ingredients": [
         "豚バラ肉",
         "もやし",
-        "ニンニク",
+        "ニラ",
         "醤油",
-        "みりん",
-        "ごま油"
+        "ごま油",
+        "塩コショウ"
       ],
-      "idea": "豚バラを醤油とみりんでいい感じに炒める",
-      "tags": [],
+      "idea": "疲れた日の定番！簡単で美味しい豚バラもやし炒め",
+      "tags": ["簡単", "時短", "定番"],
       "image": null,
       "video": null,
-      "steps": null,
-      "tips": "強火でシャキシャキ感を残す",
+      "steps": [
+        "豚バラ肉を一口大に切る",
+        "フライパンにごま油を熱し、豚バラ肉を炒める",
+        "肉の色が変わったらもやしとニラを加える",
+        "醤油と塩コショウで味を調える"
+      ],
+      "tips": "もやしは最後に入れるとシャキシャキ感が残ります",
       "nutrition": null,
       "cookTime": 10,
       "difficulty": 1,
@@ -33,32 +40,245 @@
       "id": 2,
       "name": "親子丼",
       "category": "疲れた",
+      "mainProtein": "鶏もも肉",
+      "proteinType": "鶏",
       "ingredients": [
         "鶏もも肉",
-        "卵",
         "玉ねぎ",
-        "だし",
+        "卵",
+        "米",
         "醤油",
-        "みりん"
+        "みりん",
+        "砂糖"
       ],
-      "idea": "玉ねぎを煮る",
+      "idea": "定番の親子丼。疲れた日でも簡単に作れる一品",
       "tags": [],
       "image": null,
       "video": null,
-      "steps": null,
-      "tips": "卵は半熟に仕上げる",
+      "steps": [
+        "鶏肉を一口大に切る",
+        "玉ねぎを薄切りにする",
+        "調味料を合わせて煮立たせる",
+        "鶏肉と玉ねぎを煮る",
+        "溶き卵を回し入れる"
+      ],
+      "tips": "卵は半熟になるように仕上げると美味しいです",
+      "nutrition": null,
+      "cookTime": 15,
+      "difficulty": 1,
+      "spicyLevel": 0,
+      "childFriendly": true,
+      "allergens": ["卵"],
+      "sourceUrl": "https://example.com/recipe/2"
+    },
+    {
+      "id": 3,
+      "name": "麻婆豆腐",
+      "category": "がっつり",
+      "mainProtein": "豚ひき肉",
+      "proteinType": "豚",
+      "ingredients": [
+        "豚ひき肉",
+        "木綿豆腐",
+        "長ネギ",
+        "豆板醤",
+        "甜麺醤",
+        "醤油",
+        "砂糖"
+      ],
+      "idea": "本格的な麻婆豆腐。辛さは調整可能",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": [
+        "豆腐を一口大に切る",
+        "長ネギを小口切りにする",
+        "豚ひき肉を炒める",
+        "調味料を加えて煮込む",
+        "豆腐を加えて仕上げる"
+      ],
+      "tips": "豆板醤の量で辛さを調整できます",
+      "nutrition": null,
+      "cookTime": 20,
+      "difficulty": 2,
+      "spicyLevel": 2,
+      "childFriendly": false,
+      "allergens": [],
+      "sourceUrl": "https://example.com/recipe/3"
+    },
+    {
+      "id": 4,
+      "name": "カルボナーラ",
+      "category": "がっつり",
+      "mainProtein": "ベーコン",
+      "proteinType": "豚",
+      "ingredients": [
+        "スパゲッティ",
+        "ベーコン",
+        "卵",
+        "パルメザンチーズ",
+        "黒コショウ",
+        "塩"
+      ],
+      "idea": "濃厚な味わいのカルボナーラ。簡単なのに本格派",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": [
+        "パスタを茹でる",
+        "ベーコンを炒める",
+        "溶き卵とチーズを混ぜる",
+        "茹でたパスタと和える"
+      ],
+      "tips": "卵が固まらないように注意して和えましょう",
       "nutrition": null,
       "cookTime": 15,
       "difficulty": 2,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "卵"
-      ],
-      "sourceUrl": "https://example.com/recipe/2"
+      "allergens": ["卵", "乳製品"],
+      "sourceUrl": "https://example.com/recipe/4"
     },
     {
-      "id": 3,
+      "id": 5,
+      "name": "トマトとモッツァレラのサラダ",
+      "category": "あっさり",
+      "mainProtein": "モッツァレラ",
+      "proteinType": "乳製品",
+      "ingredients": [
+        "トマト",
+        "モッツァレラチーズ",
+        "バジル",
+        "オリーブオイル",
+        "塩",
+        "黒コショウ"
+      ],
+      "idea": "イタリアン風の爽やかなサラダ",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": [
+        "トマトを輪切りにする",
+        "モッツァレラをスライスする",
+        "交互に並べて盛り付ける",
+        "バジルを散らす",
+        "オリーブオイルと塩コショウをかける"
+      ],
+      "tips": "トマトは冷蔵庫で冷やしておくと美味しいです",
+      "nutrition": null,
+      "cookTime": 10,
+      "difficulty": 1,
+      "spicyLevel": 0,
+      "childFriendly": true,
+      "allergens": ["乳製品"],
+      "sourceUrl": "https://example.com/recipe/5"
+    },
+    {
+      "id": 6,
+      "name": "冷やし中華",
+      "category": "あっさり",
+      "mainProtein": "ハム",
+      "proteinType": "豚",
+      "ingredients": [
+        "中華麺",
+        "ハム",
+        "キュウリ",
+        "トマト",
+        "錦糸卵",
+        "ごま",
+        "酢",
+        "醤油",
+        "砂糖"
+      ],
+      "idea": "夏にぴったりの冷たい中華麺",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": [
+        "麺を茹でて冷やす",
+        "具材を切る",
+        "錦糸卵を作る",
+        "調味料を合わせる",
+        "盛り付けて完成"
+      ],
+      "tips": "麺はしっかり冷やしてから盛り付けましょう",
+      "nutrition": null,
+      "cookTime": 20,
+      "difficulty": 2,
+      "spicyLevel": 0,
+      "childFriendly": true,
+      "allergens": ["卵"],
+      "sourceUrl": "https://example.com/recipe/6"
+    },
+    {
+      "id": 7,
+      "name": "手作りピザ",
+      "category": "チャレンジ",
+      "mainProtein": "チーズ",
+      "proteinType": "乳製品",
+      "ingredients": [
+        "強力粉",
+        "ドライイースト",
+        "オリーブオイル",
+        "トマトソース",
+        "モッツァレラ",
+        "バジル",
+        "塩",
+        "砂糖"
+      ],
+      "idea": "本格的な手作りピザに挑戦！",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": [
+        "生地を作って発酵させる",
+        "生地を伸ばす",
+        "トマトソースを塗る",
+        "具材をトッピング",
+        "オーブンで焼く"
+      ],
+      "tips": "生地は十分に発酵させることが重要です",
+      "nutrition": null,
+      "cookTime": 60,
+      "difficulty": 3,
+      "spicyLevel": 0,
+      "childFriendly": true,
+      "allergens": ["乳製品"],
+      "sourceUrl": "https://example.com/recipe/7"
+    },
+    {
+      "id": 8,
+      "name": "手作りパスタ",
+      "category": "チャレンジ",
+      "mainProtein": "卵",
+      "proteinType": "卵",
+      "ingredients": [
+        "強力粉",
+        "卵",
+        "オリーブオイル",
+        "塩"
+      ],
+      "idea": "本格的な手作りパスタに挑戦！",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": [
+        "生地をこねる",
+        "生地を寝かせる",
+        "麺を切る",
+        "茹でる"
+      ],
+      "tips": "生地はしっかりこねることが重要です",
+      "nutrition": null,
+      "cookTime": 45,
+      "difficulty": 3,
+      "spicyLevel": 0,
+      "childFriendly": true,
+      "allergens": ["卵"],
+      "sourceUrl": "https://example.com/recipe/8"
+    },
+    {
+      "id": 9,
       "name": "サバ缶トマト煮込み",
       "category": "疲れた",
       "ingredients": [
@@ -81,6 +301,82 @@
       "childFriendly": true,
       "allergens": [],
       "sourceUrl": "https://example.com/recipe/3"
+    },
+    {
+      "id": 10,
+      "name": "納豆パスタ",
+      "category": "チャレンジ",
+      "ingredients": [
+        "パスタ",
+        "納豆",
+        "卵黄",
+        "ねぎ",
+        "のり",
+        "めんつゆ"
+      ],
+      "idea": "パスタを茹でる",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": null,
+      "tips": "和風の意外な美味しさ",
+      "nutrition": null,
+      "cookTime": 12,
+      "difficulty": 2,
+      "spicyLevel": 0,
+      "childFriendly": false,
+      "allergens": [],
+      "sourceUrl": "https://example.com/recipe/10"
+    },
+    {
+      "id": 11,
+      "name": "アボカド丼",
+      "category": "チャレンジ",
+      "ingredients": [
+        "アボカド",
+        "マグロ缶",
+        "トマト",
+        "レタス",
+        "わさび醤油"
+      ],
+      "idea": "アボカドを切る",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": null,
+      "tips": "アボカドは熟したものを",
+      "nutrition": null,
+      "cookTime": 8,
+      "difficulty": 1,
+      "spicyLevel": 0,
+      "childFriendly": true,
+      "allergens": [],
+      "sourceUrl": "https://example.com/recipe/11"
+    },
+    {
+      "id": 12,
+      "name": "豆腐ステーキ キムチソース",
+      "category": "チャレンジ",
+      "ingredients": [
+        "木綿豆腐",
+        "キムチ",
+        "もやし",
+        "ごま油",
+        "醤油"
+      ],
+      "idea": "豆腐を焼く",
+      "tags": [],
+      "image": null,
+      "video": null,
+      "steps": null,
+      "tips": "豆腐の水切りが重要",
+      "nutrition": null,
+      "cookTime": 15,
+      "difficulty": 2,
+      "spicyLevel": 2,
+      "childFriendly": false,
+      "allergens": [],
+      "sourceUrl": "https://example.com/recipe/12"
     },
     {
       "id": 13,
@@ -127,9 +423,7 @@
       "difficulty": 1,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "卵"
-      ],
+      "allergens": ["卵"],
       "sourceUrl": "https://example.com/recipe/14"
     },
     {
@@ -152,9 +446,7 @@
       "difficulty": 1,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "乳製品"
-      ],
+      "allergens": ["乳製品"],
       "sourceUrl": "https://example.com/recipe/15"
     },
     {
@@ -202,88 +494,8 @@
       "difficulty": 1,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "卵"
-      ],
+      "allergens": ["卵"],
       "sourceUrl": "https://example.com/recipe/17"
-    },
-    {
-      "id": 4,
-      "name": "生姜焼き",
-      "category": "がっつり",
-      "ingredients": [
-        "豚ロース",
-        "生姜",
-        "醤油",
-        "みりん",
-        "酒",
-        "キャベツ"
-      ],
-      "idea": "豚肉に下味をつける",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "生姜は多めが美味しい",
-      "nutrition": null,
-      "cookTime": 15,
-      "difficulty": 2,
-      "spicyLevel": 0,
-      "childFriendly": true,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/4"
-    },
-    {
-      "id": 5,
-      "name": "鶏むねのガリバタ炒め",
-      "category": "がっつり",
-      "ingredients": [
-        "鶏むね肉",
-        "キャベツ",
-        "もやし",
-        "ニンニク",
-        "バター",
-        "醤油"
-      ],
-      "idea": "鶏肉を一口大に切る",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "鶏むねは片栗粉をまぶすと柔らか",
-      "nutrition": null,
-      "cookTime": 20,
-      "difficulty": 2,
-      "spicyLevel": 0,
-      "childFriendly": true,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/5"
-    },
-    {
-      "id": 6,
-      "name": "牛丼",
-      "category": "がっつり",
-      "ingredients": [
-        "牛薄切り肉",
-        "玉ねぎ",
-        "だし",
-        "醤油",
-        "みりん",
-        "砂糖"
-      ],
-      "idea": "玉ねぎを炒める",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "甘辛い味付けがポイント",
-      "nutrition": null,
-      "cookTime": 20,
-      "difficulty": 2,
-      "spicyLevel": 0,
-      "childFriendly": true,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/6"
     },
     {
       "id": 18,
@@ -333,9 +545,7 @@
       "difficulty": 3,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "卵"
-      ],
+      "allergens": ["卵"],
       "sourceUrl": "https://example.com/recipe/19"
     },
     {
@@ -360,9 +570,7 @@
       "difficulty": 3,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "卵"
-      ],
+      "allergens": ["卵"],
       "sourceUrl": "https://example.com/recipe/20"
     },
     {
@@ -416,83 +624,6 @@
       "sourceUrl": "https://example.com/recipe/22"
     },
     {
-      "id": 7,
-      "name": "冷しゃぶサラダ",
-      "category": "あっさり",
-      "ingredients": [
-        "豚薄切り肉",
-        "レタス",
-        "トマト",
-        "きゅうり",
-        "ポン酢",
-        "ごまドレ"
-      ],
-      "idea": "豚肉を茹でる",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "豚肉は茹ですぎない",
-      "nutrition": null,
-      "cookTime": 15,
-      "difficulty": 2,
-      "spicyLevel": 0,
-      "childFriendly": true,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/7"
-    },
-    {
-      "id": 8,
-      "name": "鶏ささみの梅しそ焼き",
-      "category": "あっさり",
-      "ingredients": [
-        "鶏ささみ",
-        "梅干し",
-        "大葉",
-        "酒",
-        "塩"
-      ],
-      "idea": "ささみを開く",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "パサつかないよう注意",
-      "nutrition": null,
-      "cookTime": 15,
-      "difficulty": 2,
-      "spicyLevel": 0,
-      "childFriendly": true,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/8"
-    },
-    {
-      "id": 9,
-      "name": "白身魚の蒸し焼き",
-      "category": "あっさり",
-      "ingredients": [
-        "白身魚",
-        "もやし",
-        "ねぎ",
-        "酒",
-        "塩",
-        "ポン酢"
-      ],
-      "idea": "魚に塩を振る",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "酒蒸しでふっくら",
-      "nutrition": null,
-      "cookTime": 18,
-      "difficulty": 2,
-      "spicyLevel": 0,
-      "childFriendly": true,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/9"
-    },
-    {
       "id": 23,
       "name": "茶碗蒸し",
       "category": "あっさり",
@@ -514,9 +645,7 @@
       "difficulty": 3,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "卵"
-      ],
+      "allergens": ["卵"],
       "sourceUrl": "https://example.com/recipe/23"
     },
     {
@@ -617,82 +746,6 @@
       "childFriendly": true,
       "allergens": [],
       "sourceUrl": "https://example.com/recipe/27"
-    },
-    {
-      "id": 10,
-      "name": "納豆パスタ",
-      "category": "チャレンジ",
-      "ingredients": [
-        "パスタ",
-        "納豆",
-        "卵黄",
-        "ねぎ",
-        "のり",
-        "めんつゆ"
-      ],
-      "idea": "パスタを茹でる",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "和風の意外な美味しさ",
-      "nutrition": null,
-      "cookTime": 12,
-      "difficulty": 2,
-      "spicyLevel": 0,
-      "childFriendly": false,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/10"
-    },
-    {
-      "id": 11,
-      "name": "アボカド丼",
-      "category": "チャレンジ",
-      "ingredients": [
-        "アボカド",
-        "マグロ缶",
-        "トマト",
-        "レタス",
-        "わさび醤油"
-      ],
-      "idea": "アボカドを切る",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "アボカドは熟したものを",
-      "nutrition": null,
-      "cookTime": 8,
-      "difficulty": 1,
-      "spicyLevel": 0,
-      "childFriendly": true,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/11"
-    },
-    {
-      "id": 12,
-      "name": "豆腐ステーキ キムチソース",
-      "category": "チャレンジ",
-      "ingredients": [
-        "木綿豆腐",
-        "キムチ",
-        "もやし",
-        "ごま油",
-        "醤油"
-      ],
-      "idea": "豆腐を焼く",
-      "tags": [],
-      "image": null,
-      "video": null,
-      "steps": null,
-      "tips": "豆腐の水切りが重要",
-      "nutrition": null,
-      "cookTime": 15,
-      "difficulty": 2,
-      "spicyLevel": 2,
-      "childFriendly": false,
-      "allergens": [],
-      "sourceUrl": "https://example.com/recipe/12"
     },
     {
       "id": 28,
@@ -813,10 +866,7 @@
       "difficulty": 2,
       "spicyLevel": 0,
       "childFriendly": true,
-      "allergens": [
-        "卵",
-        "乳製品"
-      ],
+      "allergens": ["卵", "乳製品"],
       "sourceUrl": "https://example.com/recipe/32"
     },
     {
